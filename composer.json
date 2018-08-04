@@ -1,0 +1,12 @@
+{
+    "name": "test",
+    "description": "My New Project",
+    "authors": [
+    {
+        "name": "Dinh Quoc Han",
+        "email": "admin@freetuts.net"
+    }],
+    "require": {
+        "monolog/monolog": "1.12.0"
+    }
+}
