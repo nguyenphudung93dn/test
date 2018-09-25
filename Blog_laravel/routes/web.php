@@ -60,3 +60,17 @@ Route::group(['prefix'=>'MyGroup'],function(){
         echo "User3";
     });
 });
+
+//route goi controller
+Route::get('GoiController','MyController@XinChao');
+
+Route::get('thamso/{ten}','MyController@KhoaHoc');
+
+Route::get('MyRequest','MyController@GetURL');
+
+//gui va nhan du lieu
+Route::get('getForm',function(){
+    return view('postForm');
+});
+
+Route::post('postForm',['as'=>'postForm','uses'=>'MyController@postForm']);
