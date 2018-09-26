@@ -73,4 +73,12 @@ Route::get('getForm',function(){
     return view('postForm');
 });
 
-Route::post('postForm',['as'=>'postForm','uses'=>'MyController@postForm']);
+//Route::post('postForm',['as'=>'postForm','uses'=>'MyController@postForm']);
+//or write line same like under
+Route::post('postForm', 'MyController@postForm')->name('postForm');
+
+//route ageMidlewware
+Route::get('Age',[
+    'middleware' => 'Age:editor',
+    'uses' => 'MyControllers@index_ageMidlewware',
+ ]);
