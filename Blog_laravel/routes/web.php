@@ -78,7 +78,15 @@ Route::get('getForm',function(){
 Route::post('postForm', 'MyController@postForm')->name('postForm');
 
 //route ageMidlewware
-Route::get('Age',[
-    'middleware' => 'Age:editor',
-    'uses' => 'MyControllers@index_ageMidlewware',
- ]);
+Route::get('checkage',function(){
+    echo "Exist field age.";
+})->middleware('checkage')->name('checkage');
+
+Route::get('error',function(){
+    echo 'Error because field not right';
+    echo '<br><a href="http://loctest.com/Blog_laravel/public/inputAge">Return</a>';
+})->name('error');
+
+Route::get('inputAge',function(){
+    return view('inputAge');
+})->name('inputAge');
