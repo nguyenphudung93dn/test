@@ -90,3 +90,9 @@ Route::get('error',function(){
 Route::get('inputAge',function(){
     return view('inputAge');
 })->name('inputAge');
+
+//route laravel lesson - request
+Route::get('/register',function(){
+    return view('register');
+ });
+ Route::post('/user/register',array('uses'=>'UserRegistration@postRegister'));
