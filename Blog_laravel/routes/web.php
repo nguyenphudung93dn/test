@@ -96,3 +96,7 @@ Route::get('/register',function(){
     return view('register');
  });
  Route::post('/user/register',array('uses'=>'UserRegistration@postRegister'));
+
+ //route cookie : http://loctest.com/Blog_laravel/public/cookie/set
+Route::get('/cookie/set','CookieController@setCookie');
+Route::get('/cookie/get','CookieController@getCookie');
