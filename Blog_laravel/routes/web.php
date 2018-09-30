@@ -100,3 +100,12 @@ Route::get('/register',function(){
  //route cookie : http://loctest.com/Blog_laravel/public/cookie/set
 Route::get('/cookie/set','CookieController@setCookie');
 Route::get('/cookie/get','CookieController@getCookie');
+
+//respone string json : http://loctest.com/Blog_laravel/public/json_result
+Route::get('json_result',function(){
+    return response()->json([
+        'name' => 'Helo sengariva',
+        "age" => '23',
+        'sex' => 'female',
+    ]);
+});
