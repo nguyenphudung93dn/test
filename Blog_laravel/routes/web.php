@@ -109,3 +109,9 @@ Route::get('json_result',function(){
         'sex' => 'female',
     ]);
 });
+
+//redirect
+Route::get('rr','RedirectController@index');
+Route::get('/redirectcontroller',function(){
+    return redirect()->action('RedirectController@index');
+});
