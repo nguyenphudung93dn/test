@@ -125,3 +125,7 @@ Route::get('/form',function(){
 Route::get('session/get','SessionController@accessSessionData');
 Route::get('session/set','SessionController@storeSessionData');
 Route::get('session/remove','SessionController@deleteSessionData');
+
+//get validation
+Route::get('/validation','ValidationController@showform');
+Route::post('/validation','ValidationController@validateform');
