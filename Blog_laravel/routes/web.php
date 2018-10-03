@@ -120,3 +120,8 @@ Route::get('/redirectcontroller',function(){
 Route::get('/form',function(){
     return view('form');
  });
+
+ //Route session 
+Route::get('session/get','SessionController@accessSessionData');
+Route::get('session/set','SessionController@storeSessionData');
+Route::get('session/remove','SessionController@deleteSessionData');
