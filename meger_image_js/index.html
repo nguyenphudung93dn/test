@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Thiên PB </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <style>
+    
+        .hidden {
+        display: none;
+        }
+
+    </style>
+</head>
+<body>
+        <input class="file1" type="file" data-image-selector=".image1" />
+        <input class="file2" type="file" data-image-selector=".image2" />
+        <br />
+        <img class="image1 hidden" alt="medium image 1" />
+        <img class="image2 hidden" alt="medium image 2" />
+        <br />
+        <input class="btn-merge" type="button" value="Merge!" />
+        <br />
+        <img class="merged-image hidden" alt="merged image" />
+        <canvas id="canvas" class="hidden" width="500" height="350"></canvas>
+        <div><a id="download" href="#">download image</a></div>
+
+        <script>
+                $('.file1, .file2').on('change', function() {
+                    var reader = new FileReader(),
+                        imageSelector = $(this).data('image-selector');
+        
+                    if (this.files && this.files[0]) {
+                        reader.onload = function(e) {
+                        imageIsLoaded(e, imageSelector)
+                        };
+                        reader.readAsDataURL(this.files[0]);
+                    }
+                    });
+        
+                    $('.btn-merge').on('click', merge);
+        
+                    function imageIsLoaded(e, imageSelector) {
+                    $(imageSelector).attr('src', e.target.result);
+                    $(imageSelector).removeClass('hidden');
+                    };
+                    var img ='';
+                    $("#download").click(function(){
+                    $(this).attr('href',img);
+                    $(this).attr('download','image_new.png');
+                    })
+                    function merge() {
+                        var canvas = document.getElementById('canvas'),
+                                ctx = canvas.getContext('2d'),
+                        imageObj1 = new Image(),
+                        imageObj2 = new Image();
+        
+                        imageObj1.src = $('.image1').attr('src');
+                    imageObj1.onload = function() {
+                        ctx.globalAlpha = 1;
+                        ctx.drawImage(imageObj1, 0, 0, 500, 299);
+                        imageObj2.src = $('.image2').attr('src');;
+                        imageObj2.onload = function() {
+                            ctx.globalAlpha = 1;
+                        ctx.drawImage(imageObj2, 0, 299, 500, 50);
+                        img = canvas.toDataURL('image/jpeg');
+                        $('.merged-image').attr('src', img);
+                        $('.merged-image').removeClass('hidden');
+                        }
+                    };
+                    }
+            </script>
+</body>
+</html>
